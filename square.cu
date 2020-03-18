@@ -18,8 +18,8 @@ int main(void)
     size_t size = numElements * sizeof(float);
     std::cout << "[Vector addition of " <<  numElements << " elements]\n";
 
-    float *h_A = (float *)malloc(size);
-    float *h_B = (float *)malloc(size);
+    float *h_A = new float[size];
+    float *h_B = new float[size];
 
     for (int i = 0; i < numElements; ++i)
     {
@@ -61,8 +61,8 @@ int main(void)
     cudaFree(d_A);
     cudaFree(d_B);
 
-    free(h_A);
-    free(h_B);
+    delete [] h_A;
+    delete [] h_B;
 
     std::cout << "Done\n";
     return 0;
